@@ -1,4 +1,7 @@
 <?php
+/**
+ * Administrator interface for user account management.
+ */
 $page_title = 'Manage Users';
 require_once '../includes/admin_check.php';
 

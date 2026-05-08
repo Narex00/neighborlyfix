@@ -1,4 +1,7 @@
 <?php
+/**
+ * Home page overview and statistics.
+ */
 $page_title = 'Home';
 require_once 'includes/functions.php';
 

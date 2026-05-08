@@ -1,7 +1,6 @@
 <?php
 /**
- * Database Configuration — NeighborlyIFix
- * Uses PDO with prepared statements to prevent SQL injection.
+ * Database configuration and PDO connection handler.
  */
 
 define('DB_HOST', 'localhost');

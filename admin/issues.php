@@ -1,4 +1,7 @@
 <?php
+/**
+ * Administrator interface for issue management and filtering.
+ */
 $page_title = 'Manage Issues';
 require_once '../includes/admin_check.php';
 

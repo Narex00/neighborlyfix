@@ -1,4 +1,7 @@
 <?php
+/**
+ * User profile management and update interface.
+ */
 $page_title = 'My Profile';
 require_once 'includes/auth_check.php';
 

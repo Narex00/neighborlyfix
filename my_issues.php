@@ -1,4 +1,7 @@
 <?php
+/**
+ * Display list of issues reported by the current user.
+ */
 $page_title = 'My Issues';
 require_once 'includes/auth_check.php';
 if (is_admin()) redirect(base_url('admin/'));

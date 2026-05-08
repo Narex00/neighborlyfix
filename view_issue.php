@@ -1,4 +1,7 @@
 <?php
+/**
+ * Display issue details, comments, and audit history.
+ */
 $page_title = 'View Issue';
 require_once 'includes/auth_check.php';
 
@@ -156,7 +159,7 @@ require_once 'includes/header.php';
                     <table class="table table-sm table-borderless mb-0">
                         <tr><td class="text-muted">Reported by</td><td class="fw-semibold"><?= sanitize($issue['reporter_name']) ?></td></tr>
                         <tr><td class="text-muted">Date</td><td><?= date('d M Y, H:i', strtotime($issue['created_at'])) ?></td></tr>
-                        <tr><td class="text-muted">Location</td><td><?= $issue['location'] ? sanitize($issue['location']) : '<span class="text-muted">N/A</span>' ?></td></tr>
+                        <tr><td class="text-muted">Location</td><td><?php display_location($issue['location'] ?? ''); ?></td></tr>
                         <tr><td class="text-muted">Last Updated</td><td><?= time_ago($issue['updated_at']) ?></td></tr>
                         <?php if($issue['resolved_at']): ?>
                         <tr><td class="text-muted">Resolved</td><td><?= date('d M Y, H:i', strtotime($issue['resolved_at'])) ?></td></tr>

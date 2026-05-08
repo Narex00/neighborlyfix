@@ -1,4 +1,7 @@
 <?php
+/**
+ * User registration and account creation form.
+ */
 $page_title = 'Register';
 require_once 'includes/functions.php';
 if (is_logged_in()) redirect(base_url('dashboard.php'));
@@ -7,8 +10,7 @@ $errors = [];
 $old = ['full_name'=>'','email'=>'','phone'=>'','address'=>''];
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    if (!verify_csrf($_POST['csrf_token'] ?? '')) {
-        $errors[] = 'Invalid security token. Please try again.';
+    if (!verify_csrf($_POST['csrf_token'] ?? '')) {        http_response_code(403);        $errors[] = 'Invalid security token. Please try again.';
     }
 
     $full_name = trim($_POST['full_name'] ?? '');
@@ -36,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $stmt = $pdo->prepare("INSERT INTO users (full_name,email,password,phone,address) VALUES (?,?,?,?,?)");
             $stmt->execute([$full_name, $email, $hash, $phone, $address]);
             set_flash('success', 'Account created successfully! Please log in.');
-            redirect(base_url('login.php'));
+            redirect(base_url('dashboard.php'));
         }
     }
     // Regenerate CSRF token after failed attempt

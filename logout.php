@@ -1,4 +1,7 @@
 <?php
+/**
+ * Session termination and user logout handler.
+ */
 require_once 'includes/functions.php';
 $_SESSION = [];
 if (ini_get("session.use_cookies")) {

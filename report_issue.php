@@ -1,6 +1,10 @@
 <?php
+/**
+ * Issue reporting form and submission handler.
+ */
 $page_title = 'Report Issue';
 require_once 'includes/auth_check.php';
+require_once 'config/settings.php';
 if (is_admin()) redirect(base_url('admin/'));
 
 $pdo = getDBConnection();
@@ -36,6 +40,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (empty($errors)) {
         $stmt = $pdo->prepare("INSERT INTO issues (title,description,category_id,user_id,priority,location,image_path) VALUES (?,?,?,?,?,?,?)");
         $stmt->execute([$title, $description, $category_id, current_user_id(), $priority, $location, $imagePath]);
+        
+        // Send email notification to administrator
+        $user = get_user(current_user_id());
+        $user_full_name = $user['full_name'] ?? 'Unknown User';
+        
+        // Get category name
+        $cat_stmt = $pdo->prepare("SELECT name FROM categories WHERE id = ?");
+        $cat_stmt->execute([$category_id]);
+        $category = $cat_stmt->fetch();
+        $category_name = $category['name'] ?? 'Unknown';
+        
+        $to = ADMIN_EMAIL;
+        $subject = 'New Issue Reported: ' . $title;
+        $message = "A new issue has been reported on NeighborlyIFix.\n\n"
+                 . "Title: " . $title . "\n"
+                 . "Category: " . $category_name . "\n"
+                 . "Priority: " . strtoupper($priority) . "\n"
+                 . "Location: " . ($location ?: 'Not provided') . "\n"
+                 . "Reported by: " . $user_full_name . "\n"
+                 . "Submitted at: " . date('Y-m-d H:i:s') . "\n\n"
+                 . "Description:\n" . $description . "\n\n"
+                 . "Please log in to the admin panel to review and assign this issue.";
+        
+        // Send email via SMTP
+        $mail_sent = send_email_smtp($to, $subject, $message);
+        log_event("Issue #{$pdo->lastInsertId()} created. Email: " . ($mail_sent ? "sent" : "failed") . " to $to");
+        
         set_flash('success', 'Issue reported successfully! We will review it shortly.');
         redirect(base_url('my_issues.php'));
     }

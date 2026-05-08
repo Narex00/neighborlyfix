@@ -1,4 +1,7 @@
 <?php
+/**
+ * About page with project description.
+ */
 $page_title = 'About';
 require_once 'includes/header.php';
 ?>

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Administrator interface for issue editing and status updates.
+ */
 $page_title = 'Update Issue';
 require_once '../includes/admin_check.php';
 

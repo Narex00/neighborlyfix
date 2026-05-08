@@ -1,4 +1,7 @@
 <?php
+/**
+ * User dashboard with issue statistics and recent activity.
+ */
 $page_title = 'Dashboard';
 require_once 'includes/auth_check.php';
 if (is_admin()) redirect(base_url('admin/'));

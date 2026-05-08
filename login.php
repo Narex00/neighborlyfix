@@ -1,4 +1,7 @@
 <?php
+/**
+ * User authentication and login handler.
+ */
 $page_title = 'Login';
 require_once 'includes/functions.php';
 if (is_logged_in()) redirect(is_admin() ? base_url('admin/') : base_url('dashboard.php'));
@@ -14,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     if (!verify_csrf($_POST['csrf_token'] ?? '')) {
+        http_response_code(403);
         $errors[] = 'Invalid security token.';
     }
 

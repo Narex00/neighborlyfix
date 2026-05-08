@@ -1,4 +1,7 @@
 <?php
+/**
+ * Administrator dashboard with system overview and statistics.
+ */
 $page_title = 'Admin Dashboard';
 require_once '../includes/admin_check.php';
 

@@ -1,4 +1,7 @@
 <?php
+/**
+ * Shared page header and navigation template.
+ */
 require_once __DIR__ . '/functions.php';
 $_current_page = basename($_SERVER['PHP_SELF'], '.php');
 ?>

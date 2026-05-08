@@ -1,4 +1,3 @@
-<!-- ── FOOTER ──────────────────────────────────────── -->
 <footer class="footer bg-dark text-light pt-5 pb-4 mt-5">
     <div class="container">
         <div class="row g-4">
@@ -27,9 +26,9 @@
             <div class="col-lg-3 col-md-4">
                 <h6 class="fw-semibold mb-3">Contact</h6>
                 <ul class="list-unstyled text-secondary">
-                    <li class="mb-2"><i class="fas fa-envelope me-2"></i>support@neighborlyifix.com</li>
-                    <li class="mb-2"><i class="fas fa-phone me-2"></i>+44 123 456 7890</li>
-                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>United Kingdom</li>
+                    <li class="mb-2"><i class="fas fa-envelope me-2"></i>samplesupport@neighborlyifix.com</li>
+                    <li class="mb-2"><i class="fas fa-phone me-2"></i>+45 00 00 00 00</li>
+                    <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i>Denmark</li>
                 </ul>
             </div>
         </div>
