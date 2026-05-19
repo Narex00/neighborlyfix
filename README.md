@@ -40,6 +40,8 @@ The application uses environment variables in `.env`:
 - `SMTP_PASS` — SMTP password
 - `USE_SMTP` — set to `true` to enable SMTP email sending
 
+> Note: `config/database.php` now reads database credentials from `.env` if present, so `DB_*` values must be set locally before running the app.
+
 ## Database Setup
 
 Create a database for the application and update `.env` accordingly.
